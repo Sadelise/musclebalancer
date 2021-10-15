@@ -10,23 +10,145 @@ class App extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      muscles: [],
+      // muscles: [],
       filterBy: '',
       newMuscle: '',
       error: null,
       username: '',
       password: '',
-      user: null
+      user: null,
+
+      muscles: [
+        {
+          "id": 1,
+          "name": "Anterior deltoid",
+          "chosen": true
+        },
+        {
+          "id": 2,
+          "name": "Quadriceps",
+          "chosen": false
+        },
+        {
+          "id": 3,
+          "name": "Hamstrings",
+          "chosen": false
+        },
+        {
+          "name": "Gluteus maximus",
+          "id": 4,
+          "chosen": false
+        },
+        {
+          "name": "Obliques",
+          "id": 5,
+          "chosen": false
+        },
+        {
+          "name": "Supraspinatus",
+          "id": 6,
+          "chosen": false
+        },
+        {
+          "name": "Sternocleidomastoid",
+          "id": 7,
+          "chosen": true
+        },
+        {
+          "name": "Splenius",
+          "id": 8,
+          "chosen": false
+        },
+        {
+          "name": "Lateral deltoid",
+          "id": 9,
+          "chosen": false
+        },
+        {
+          "name": "Posterior deltoid",
+          "id": 11,
+          "chosen": false
+        },
+        {
+          "name": "Triceps Brachii",
+          "id": 12,
+          "chosen": false
+        },
+        {
+          "name": "Brachioradialis",
+          "chosen": "false",
+          "id": 13
+        },
+        {
+          "name": "Brachioradialis",
+          "chosen": "false",
+          "id": 15
+        },
+        {
+          "name": "Brachioradialis",
+          "chosen": "false",
+          "id": 17
+        },
+        {
+          "name": "Brachioradialis",
+          "chosen": "false",
+          "id": 21
+        },
+        {
+          "name": "Brachioradialis",
+          "chosen": "false",
+          "id": 23
+        },
+        {
+          "name": "Brachioradialis",
+          "chosen": "false",
+          "id": 24
+        },
+        {
+          "name": "Brachioradialis",
+          "chosen": "false",
+          "id": 25
+        },
+        {
+          "name": "Brachioradialis",
+          "chosen": "false",
+          "id": 26
+        },
+        {
+          "name": "Brachioradialis",
+          "chosen": "false",
+          "id": 27
+        },
+        {
+          "name": "Brachioradialis",
+          "chosen": "false",
+          "id": 28
+        }
+      ],
+      users: [
+        {
+          "id": 1,
+          "name": "jee",
+          "password": "jee"
+        },
+        {
+          "username": "jee",
+          "password": "jee",
+          "id": 2
+        }
+      ]
+
+
     }
   }
 
   componentDidMount() {
     console.log("mounting..")
-    muscleService.getAll()
-      .then(muscles => {
-        console.log("fulfilled", muscles)
-        this.setState({ muscles: this.state.muscles.concat(muscles) })
-      })
+    // muscleService.getAll()
+    //   .then(muscles => {
+    //     console.log("fulfilled", muscles)
+    //     this.setState({ muscles: this.state.muscles.concat(muscles) })
+    //   })
   }
 
   send = () => {
@@ -114,10 +236,13 @@ class App extends React.Component {
   login = async (event) => {
     event.preventDefault()
     try {
-      const user = await loginService.login({
+      const user =
+      // await loginService.login(
+      {
         username: this.state.username,
         password: this.state.password
-      })
+      }
+      // )
       this.setState({ username: '', password: '', user })
     } catch (exception) {
       this.setState({
