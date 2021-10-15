@@ -1,13 +1,14 @@
 #
 # Build:
-# docker build -t musclebalancer:latest . 
+# docker build -t sadelise/musclebalancer:latest . 
 #
 # Run:
 # docker run -d -p 3000:3000 musclebalancer
 #
 
 
-FROM node:lts-alpine3.14
+FROM node:14.18.1-alpine3.14 
+#node:lts-alpine3.14
 
 WORKDIR /app
 
@@ -17,6 +18,7 @@ RUN npm install --silent
 COPY . .
 
 EXPOSE 3000
+EXPOSE 3001
 
-CMD ["npm", "start"]
+CMD [ "npm", "run", "startall" ]
 
